@@ -7,9 +7,13 @@
   <title>Document</title>
 </head>
 <body>
-  <a href="{% url 'accounts:signup' %}">회원가입</a><br>
-  <a href="{% url 'accounts:login' %}">로그인 </a><br>
+  {% if user.is_active %}
   <a href="{% url 'accounts:logout' %}">로그아웃 </a><hr>
+  {% else %}
+  <a href="{% url 'accounts:signup' %}">회원가입</a>
+  <a href="{% url 'accounts:login' %}">로그인 </a><br>
+  <hr>
+  {% endif %}
   {% block body %}
   {% endblock %}
 
